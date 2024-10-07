@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Drawing App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center">Virtual Drawing App</h1>
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <!-- Button to start the video feed -->
+                        <button id="start-video-btn" class="btn btn-primary mb-3">Virtual Drawing App</button>
+                        <!-- The video stream will be displayed here -->
+                        <img src="" class="img-fluid" id="video-feed" style="display:none;" alt="Video stream will appear here">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript to handle the video feed loading -->
+    <script>
+        document.getElementById("start-video-btn").addEventListener("click", function() {
+            // Show the video stream
+            var videoFeed = document.getElementById("video-feed");
+            videoFeed.src = "{{ url_for('video_feed') }}";
+            videoFeed.style.display = "block";
+            // Hide the button after starting the video
+            this.style.display = "none";
+        });
+    </script>
+</body>
+</html>
